@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>年収別シミュレータ｜おかね週間</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <p class="pr-banner">本サイトはPRを含みます。掲載する情報の一部にはアフィリエイトプログラムを利用したリンク（現在準備中）が含まれる場合があります。</p>
+  <h1><a href="index.html">おかね週間（@okane_shuukan）</a></h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">トップ</a></li>
+      <li><a href="simulator.html" class="active">年収別シミュレータ</a></li>
+      <li><a href="sources.html">出典一覧</a></li>
+      <li><a href="privacy.html">プライバシーポリシー</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <section class="simulator">
+    <h2>年収別シミュレータ</h2>
+    <p>本試算は概算です。実際の税額・控除額は年収、家族構成、他の所得控除の有無等で変わります。正確な金額は国税庁の情報や税務署・専門家でご確認ください。</p>
+
+    <form id="sim-form">
+      <label for="income-select">年収</label>
+      <select id="income-select"></select>
+
+      <label for="attribute-select">家族構成</label>
+      <select id="attribute-select"></select>
+
+      <label for="pension-select">勤務先の企業年金</label>
+      <select id="pension-select">
+        <option value="no_pension">なし</option>
+        <option value="with_pension">あり（企業型DB・DC等）</option>
+      </select>
+    </form>
+
+    <div id="sim-result" aria-live="polite"></div>
+  </section>
+
+  <section class="affiliate-pending">
+    <h3>関連情報（準備中）</h3>
+    <ul class="affiliate-list">
+      <li>新NISAの始め方まとめ記事（PR・準備中）</li>
+      <li>ふるさと納税 上限額シミュレーター解説（PR・準備中）</li>
+      <li>会社員のiDeCo節税額の考え方（PR・準備中）</li>
+    </ul>
+    <p class="affiliate-note">アフィリエイトプログラム未承認のため、現在リンクは
+    準備中です。承認後にご案内します。</p>
+  </section>
+
+  <script type="application/json" id="sim-data">
+{
+  "disclaimer": "本試算は概算です。実際の税額・控除額は年収、家族構成、他の所得控除の有無等で変わります。正確な金額は国税庁の情報や税務署・専門家でご確認ください。",
+  "attributes": [
+    {
+      "id": "single",
+      "name": "独身"
+    },
+    {
+      "id": "dual_income_no_spousal_deduction",
+      "name": "共働き（配偶者控除なし）"
+    },
+    {
+      "id": "spouse_dependent_no_child",
+      "name": "配偶者扶養・子なし"
+    },
+    {
+      "id": "spouse_dependent_1_child_highschool",
+      "name": "配偶者扶養・子1人（高校生）"
+    }
+  ],
+  "income_brackets": [
+    {
+      "income_man_yen": 400,
+      "furusato_limit_single_man_yen": 4.2,
+      "furusato_limit_couple_1child_man_yen": 2.4,
+      "by_attribute": {
+        "single": {
+          "furusato_limit_man_yen": 4.2,
+          "estimated_income_tax_man_yen": 8.5,
+          "estimated_resident_tax_man_yen": 17.8,
+          "net_take_home_estimate_man_yen": 313.7
+        },
+        "dual_income_no_spousal_deduction": {
+          "furusato_limit_man_yen": 4.2,
+          "estimated_income_tax_man_yen": 8.5,
+          "estimated_resident_tax_man_yen": 17.8,
+          "net_take_home_estimate_man_yen": 313.7
+        },
+        "spouse_dependent_no_child": {
+          "furusato_limit_man_yen": 3.3,
+          "estimated_income_tax_man_yen": 6.6,
+          "estimated_resident_tax_man_yen": 14.0,
+          "net_take_home_estimate_man_yen": 319.4
+        },
+        "spouse_dependent_1_child_highschool": {
+          "furusato_limit_man_yen": 2.4,
+          "estimated_income_tax_man_yen": 4.6,
+          "estimated_resident_tax_man_yen": 10.2,
+          "net_take_home_estimate_man_yen": 325.2
+        }
+      }
+    },
+    {
+      "income_man_yen": 500,
+      "furusato_limit_single_man_yen": 6.1,
+      "furusato_limit_couple_1child_man_yen": 4.0,
+      "by_attribute": {
+        "single": {
+          "furusato_limit_man_yen": 6.1,
+          "estimated_income_tax_man_yen": 13.8,
+          "estimated_resident_tax_man_yen": 24.3,
+          "net_take_home_estimate_man_yen": 386.9
+        },
+        "dual_income_no_spousal_deduction": {
+          "furusato_limit_man_yen": 6.1,
+          "estimated_income_tax_man_yen": 13.8,
+          "estimated_resident_tax_man_yen": 24.3,
+          "net_take_home_estimate_man_yen": 386.9
+        },
+        "spouse_dependent_no_child": {
+          "furusato_limit_man_yen": 4.9,
+          "estimated_income_tax_man_yen": 9.9,
+          "estimated_resident_tax_man_yen": 20.5,
+          "net_take_home_estimate_man_yen": 394.6
+        },
+        "spouse_dependent_1_child_highschool": {
+          "furusato_limit_man_yen": 4.0,
+          "estimated_income_tax_man_yen": 8.0,
+          "estimated_resident_tax_man_yen": 16.7,
+          "net_take_home_estimate_man_yen": 400.3
+        }
+      }
+    },
+    {
+      "income_man_yen": 600,
+      "furusato_limit_single_man_yen": 7.7,
+      "furusato_limit_couple_1child_man_yen": 5.8,
+      "by_attribute": {
+        "single": {
+          "furusato_limit_man_yen": 7.7,
+          "estimated_income_tax_man_yen": 20.4,
+          "estimated_resident_tax_man_yen": 30.8,
+          "net_take_home_estimate_man_yen": 458.8
+        },
+        "dual_income_no_spousal_deduction": {
+          "furusato_limit_man_yen": 7.7,
+          "estimated_income_tax_man_yen": 20.4,
+          "estimated_resident_tax_man_yen": 30.8,
+          "net_take_home_estimate_man_yen": 458.8
+        },
+        "spouse_dependent_no_child": {
+          "furusato_limit_man_yen": 6.8,
+          "estimated_income_tax_man_yen": 16.5,
+          "estimated_resident_tax_man_yen": 27.0,
+          "net_take_home_estimate_man_yen": 466.5
+        },
+        "spouse_dependent_1_child_highschool": {
+          "furusato_limit_man_yen": 5.8,
+          "estimated_income_tax_man_yen": 12.7,
+          "estimated_resident_tax_man_yen": 23.2,
+          "net_take_home_estimate_man_yen": 474.1
+        }
+      }
+    },
+    {
+      "income_man_yen": 700,
+      "furusato_limit_single_man_yen": 10.8,
+      "furusato_limit_couple_1child_man_yen": 7.6,
+      "by_attribute": {
+        "single": {
+          "furusato_limit_man_yen": 10.8,
+          "estimated_income_tax_man_yen": 31.2,
+          "estimated_resident_tax_man_yen": 37.7,
+          "net_take_home_estimate_man_yen": 526.1
+        },
+        "dual_income_no_spousal_deduction": {
+          "furusato_limit_man_yen": 10.8,
+          "estimated_income_tax_man_yen": 31.2,
+          "estimated_resident_tax_man_yen": 37.7,
+          "net_take_home_estimate_man_yen": 526.1
+        },
+        "spouse_dependent_no_child": {
+          "furusato_limit_man_yen": 8.5,
+          "estimated_income_tax_man_yen": 23.6,
+          "estimated_resident_tax_man_yen": 33.9,
+          "net_take_home_estimate_man_yen": 537.5
+        },
+        "spouse_dependent_1_child_highschool": {
+          "furusato_limit_man_yen": 7.6,
+          "estimated_income_tax_man_yen": 19.7,
+          "estimated_resident_tax_man_yen": 30.1,
+          "net_take_home_estimate_man_yen": 545.2
+        }
+      }
+    },
+    {
+      "income_man_yen": 800,
+      "furusato_limit_single_man_yen": 13.0,
+      "furusato_limit_couple_1child_man_yen": 10.8,
+      "by_attribute": {
+        "single": {
+          "furusato_limit_man_yen": 13.0,
+          "estimated_income_tax_man_yen": 46.6,
+          "estimated_resident_tax_man_yen": 45.2,
+          "net_take_home_estimate_man_yen": 588.2
+        },
+        "dual_income_no_spousal_deduction": {
+          "furusato_limit_man_yen": 13.0,
+          "estimated_income_tax_man_yen": 46.6,
+          "estimated_resident_tax_man_yen": 45.2,
+          "net_take_home_estimate_man_yen": 588.2
+        },
+        "spouse_dependent_no_child": {
+          "furusato_limit_man_yen": 11.9,
+          "estimated_income_tax_man_yen": 38.8,
+          "estimated_resident_tax_man_yen": 41.4,
+          "net_take_home_estimate_man_yen": 599.8
+        },
+        "spouse_dependent_1_child_highschool": {
+          "furusato_limit_man_yen": 10.8,
+          "estimated_income_tax_man_yen": 31.0,
+          "estimated_resident_tax_man_yen": 37.6,
+          "net_take_home_estimate_man_yen": 611.4
+        }
+      }
+    }
+  ],
+  "ideco_limits": {
+    "no_pension": {
+      "monthly_limit_yen": 23000,
+      "annual_limit_yen": 276000
+    },
+    "with_pension": {
+      "monthly_limit_yen": 20000,
+      "annual_limit_yen": 240000
+    }
+  }
+}
+  </script>
+  <script src="js/simulator.js"></script>
+
+</main>
+<footer class="site-footer">
+  <p class="disclaimer">本サイトで示す金額・税額はすべて一般的な条件に基づく概算です。実際の税額・控除額は年収・家族構成・他の所得控除の有無等により異なります。正式な金額・お取り扱いは国税庁・金融庁等の公式情報、または税務署・専門家にご確認ください。投資助言・特定の金融商品の勧誘を目的とするものではありません。</p>
+  <p class="copyright">&copy; おかね週間</p>
+</footer>
+</body>
+</html>

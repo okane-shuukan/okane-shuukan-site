@@ -1,0 +1,159 @@
+:root {
+  --color-text: #2b2b2b;
+  --color-bg: #fdfcf9;
+  --color-accent: #2f6f5e;
+  --color-border: #e2ddd2;
+  --color-notice-bg: #fff7e6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.8;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+.site-header {
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.5rem 1.5rem 1rem;
+}
+
+.pr-banner {
+  background: var(--color-notice-bg);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+}
+
+.site-header h1 {
+  font-size: 1.4rem;
+}
+
+.site-header h1 a {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav a.active {
+  font-weight: bold;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.hero, .features, .cards, .notice, .sources, .simulator, .privacy {
+  margin-bottom: 2rem;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card {
+  display: block;
+  flex: 1 1 260px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1rem;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: var(--color-accent);
+}
+
+.notice {
+  background: var(--color-notice-bg);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+table.sources-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sources-table th, .sources-table td {
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-size: 0.9rem;
+  word-break: break-all;
+}
+
+form#sim-form {
+  display: grid;
+  gap: 0.5rem 1rem;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+  max-width: 480px;
+  margin: 1rem 0;
+}
+
+#sim-result {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+}
+
+#sim-result dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.25rem 1rem;
+}
+
+#sim-result dt {
+  font-weight: bold;
+}
+
+.affiliate-pending {
+  margin-top: 1.5rem;
+}
+
+.affiliate-list li {
+  color: #777;
+}
+
+.affiliate-note {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding: 1rem 1.5rem 2rem;
+  font-size: 0.8rem;
+  color: #555;
+}
