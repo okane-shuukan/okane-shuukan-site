@@ -1,0 +1,57 @@
+{
+  "_note": "制度由来の数値の唯一の定義元。本サイトはビルドを持たない静的HTMLのため、HTML側は表示用の実値を保持したままにし（JSが無効でも法令由来の数値が消えないようにするため）、このファイルとの一致を scripts/verify_constants.py で機械的に検証する。数値を更新するときは必ずこのファイルを先に直し、verify_constants.py が通るまでHTML側を合わせること。",
+  "_verify": "python3 scripts/verify_constants.py",
+  "as_of": "2026-07",
+  "as_of_label": "2026年7月時点",
+
+  "ideco": {
+    "_note": "会社員（国民年金第2号被保険者）の拠出限度額。2024年12月改正後の現行値。",
+    "current": {
+      "effective_from": "2024-12-01",
+      "no_pension": { "monthly_yen": 23000, "annual_yen": 276000 },
+      "with_corporate_pension": { "monthly_yen": 20000, "annual_yen": 240000 }
+    },
+    "scheduled_change": {
+      "effective_from": "2026-12-01",
+      "status": "政令公布済み・施行日確定",
+      "legal_basis": "国民年金基金令等の一部を改正する政令（令和7年政令第442号・2025年12月24日公布）",
+      "source_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/nenkin/nenkin/kyoshutsu/2025kaisei.html",
+      "second_insured_monthly_yen": 62000,
+      "second_insured_note": "第2号被保険者および新設の第5号被保険者は月6.2万円。企業年金がある場合は企業年金の掛金と合算して月6.2万円まで。経過措置の適用を受ける場合は月2.75万円で据え置き。",
+      "transitional_monthly_yen": 27500,
+      "other_changes": [
+        "第1号被保険者・第4号被保険者：月6.8万円 → 月7.5万円",
+        "第3号被保険者：月2.3万円（変更なし）",
+        "iDeCoに加入できる年齢：65歳未満 → 70歳未満"
+      ]
+    }
+  },
+
+  "nisa": {
+    "_note": "2024年開始の新しいNISA。出典は金融庁「新しいNISA」。",
+    "tsumitate_annual_man_yen": 120,
+    "growth_annual_man_yen": 240,
+    "lifetime_man_yen": 1800,
+    "growth_within_lifetime_man_yen": 1200,
+    "holding_period": "無期限"
+  },
+
+  "furusato": {
+    "_note": "自己負担額と、年収別の控除上限額の目安（独身・概算）。上限額は当サイトの試算値であり、simulator.html の sim-data と同一でなければならない。",
+    "self_burden_yen": 2000,
+    "one_stop_max_municipalities": 5,
+    "limit_single_man_yen": {
+      "400": 4.2,
+      "500": 6.1,
+      "600": 7.7,
+      "700": 10.8,
+      "800": 13.0
+    }
+  },
+
+  "income_tax": {
+    "_note": "iDeCo記事での節税額の考え方の例示に使う税率。出典は国税庁「所得税の税率」。",
+    "example_rate_percent": 10,
+    "example_annual_contribution_man_yen": 24
+  }
+}

@@ -39,6 +39,21 @@
     </form>
 
     <div id="sim-result" aria-live="polite"></div>
+    <p class="as-of">試算に使っている制度の数値は2026年7月時点のものです
+    （iDeCoの拠出限度額は2024年12月改正後の現行値）。</p>
+
+    <!-- 改正予告。定義元は /data/tax-constants.json（ideco.scheduled_change）。
+         施行日を過ぎたら sim-data の ideco_limits を入れ替え、この節を削除する。 -->
+    <div class="amendment">
+      <h4>2026年12月1日からiDeCoの拠出限度額が変わります</h4>
+      <p>国民年金基金令等の一部を改正する政令（令和7年政令第442号・2025年12月24日公布）
+      により、2026年12月1日から会社員（国民年金第2号被保険者）の拠出限度額は
+      <strong>月6.2万円</strong>になります（企業年金がある場合は企業年金の掛金と
+      合算して月6.2万円まで、経過措置の適用を受ける場合は月2.75万円で据え置き）。
+      上のシミュレータは施行日前の現行の限度額で計算しています。詳しくは
+      <a href="articles/ideco-limit-tax.html">iDeCoの拠出限度額と節税メリット</a>を
+      ご覧ください。</p>
+    </div>
   </section>
 
   <section class="affiliate-pending">
@@ -56,6 +71,9 @@
     行ってください。</p>
   </section>
 
+  <!-- 制度由来の数値（ideco_limits・furusato_limit_single_man_yen）の定義元は
+       /data/tax-constants.json。JSONにコメントを書けないためここに明示する。
+       更新時は定義元を先に直し、scripts/verify_constants.py を通すこと。 -->
   <script type="application/json" id="sim-data">
 {
   "disclaimer": "本試算は概算です。実際の税額・控除額は年収、家族構成、他の所得控除の有無等で変わります。正確な金額は国税庁の情報や税務署・専門家でご確認ください。",

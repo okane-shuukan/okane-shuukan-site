@@ -38,6 +38,9 @@
     <p>下表は、当サイトの<a href="../simulator.html">年収別シミュレータ</a>と
     同じ前提でまとめた<strong>独身の場合の概算</strong>です。あくまで一般的な
     条件に基づく目安で、社会保険料や他の控除の状況によって前後します。</p>
+    <!-- 数値の定義元は /data/tax-constants.json（furusato.limit_single_man_yen）。
+         simulator.html の sim-data と同一でなければならない。
+         更新時は定義元を先に直し、scripts/verify_constants.py を通すこと。 -->
     <table class="sources-table">
       <thead>
         <tr><th>年収</th><th>控除上限額の目安（独身・概算）</th></tr>
@@ -50,6 +53,7 @@
         <tr><td>800万円</td><td>約13.0万円</td></tr>
       </tbody>
     </table>
+    <p class="as-of">上記は2026年7月時点の制度に基づく当サイトの試算値（概算）です。</p>
     <p>配偶者を扶養している場合や、扶養する子どもがいる場合は、これより
     上限額が小さくなる傾向があります。家族構成別の目安は
     <a href="../simulator.html">年収別シミュレータ</a>で確認できます
