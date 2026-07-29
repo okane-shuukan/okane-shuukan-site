@@ -8,6 +8,8 @@
     "_note": "会社員（国民年金第2号被保険者）の拠出限度額。2024年12月改正後の現行値。",
     "current": {
       "effective_from": "2024-12-01",
+      "corporate_dc_combined_monthly_yen": 55000,
+      "corporate_dc_combined_note": "企業型DCの事業主掛金額と確定給付型（DB等）の他制度掛金相当額との合計枠（月5.5万円）。企業年金がある会社員がiDeCoに拠出できるのは、この枠から事業主掛金等を差し引いた残額の範囲内で、かつ with_corporate_pension.monthly_yen が上限。事業主掛金が大きい場合は実際の上限がそれを下回る。",
       "no_pension": { "monthly_yen": 23000, "annual_yen": 276000 },
       "with_corporate_pension": { "monthly_yen": 20000, "annual_yen": 240000 }
     },

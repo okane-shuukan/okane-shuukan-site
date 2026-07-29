@@ -84,6 +84,10 @@
     var note = document.createElement("p");
     note.className = "sim-disclaimer";
     note.textContent = data.disclaimer || "";
+    // 企業年金ありのときだけ、月2.0万円が「上限」であることの補足を同じ注記に足す。
+    if (idecoKey === "with_pension" && data.ideco_with_pension_note) {
+      note.textContent += data.ideco_with_pension_note;
+    }
 
     resultEl.innerHTML = "";
     resultEl.appendChild(dl);

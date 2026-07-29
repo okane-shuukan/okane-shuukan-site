@@ -57,6 +57,21 @@ for key, label in (("no_pension", "企業年金なし"), ("with_corporate_pensio
         f"iDeCo拠出限度額（{label}）",
     )
 
+# 企業型DCの事業主掛金＋DB等の他制度掛金相当額の合計枠。企業年金がある場合の
+# 上限が「枠の残額の範囲内、かつ月2.0万円」である説明に使う。記事の注記と
+# simulator.html の sim-data 注記の両方に同じ値が現れる。
+combined = cur["corporate_dc_combined_monthly_yen"]
+with_m = cur["with_corporate_pension"]["monthly_yen"]
+for rel in ("articles/ideco-limit-tax.html", "simulator.html"):
+    need(rel, f"月{man(combined)}万円", "企業型DC＋他制度掛金の合計枠")
+# 注記本文が「上限」として引く月額も定義元由来であること（表・sim-data と同じ値を
+# 地の文にも書いているため、片方だけ更新される事故をここで止める）。
+need(
+    "articles/ideco-limit-tax.html",
+    f"かつ月{man(with_m)}万円が上限",
+    "注記の上限額（企業年金あり）",
+)
+
 # simulator.html の sim-data（JSONとして取り出して厳密に比較）
 sim_html = read("simulator.html")
 m = re.search(r'<script type="application/json" id="sim-data">(.*?)</script>', sim_html, re.S)
@@ -81,6 +96,17 @@ else:
             f"simulator.html: sim-data の ideco_limits が定義元と不一致\n"
             f"    期待: {expected_limits}\n    実際: {sim.get('ideco_limits')}"
         )
+
+    # 企業年金ありを選んだときに表示する注記（JSが読む文字列そのもの）。
+    # 合計枠と、上限として引く月額の両方が定義元由来であることを要求する。
+    note = sim.get("ideco_with_pension_note") or ""
+    for yen, label in ((combined, "合計枠"), (with_m, "上限額")):
+        checks += 1
+        if f"月{man(yen)}万円" not in note:
+            failures.append(
+                "simulator.html: sim-data の ideco_with_pension_note に"
+                f"{label}（月{man(yen)}万円）の記載が無い"
+            )
 
     # ふるさと納税の年収別上限（記事の表 と sim-data の二重管理を突合）
     for income, limit in C["furusato"]["limit_single_man_yen"].items():
