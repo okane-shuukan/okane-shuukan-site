@@ -201,6 +201,22 @@ form#sim-form {
   padding-left: 1.2em;
 }
 
+/* --------------------------------------------------------------------------
+   広告主が文言を指定している注釈
+   広告主のガイドラインで「訴求文言付近に配置」「文言変更不可」とされた注釈を
+   置く場所。読み飛ばされない程度に小さく、本文とは区別できる濃さにする。
+   -------------------------------------------------------------------------- */
+.legal-notes {
+  font-size: 0.8rem;
+  color: #666;
+  padding-left: 1.2em;
+  margin: 0.8rem 0 0;
+}
+
+.legal-notes li {
+  margin-bottom: 0.3rem;
+}
+
 .site-footer {
   border-top: 1px solid var(--color-border);
   padding: 1rem 1.5rem 2rem;
