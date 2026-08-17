@@ -202,6 +202,50 @@ form#sim-form {
 }
 
 /* --------------------------------------------------------------------------
+   口座開設の流れ（手順）
+   アフィリエイトリンクの直前に置く手続きの説明。訴求ではなく事実の説明なので
+   目立たせず、本文と区別がつく程度の枠にとどめる。新しい色は増やさず
+   :root のトークンのみ使う。
+   -------------------------------------------------------------------------- */
+.account-steps {
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  margin: 1.5rem 0;
+  font-size: 0.92rem;
+}
+
+.account-steps h4 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+}
+
+/* 1ブロックに複数の手順（iDeCo・NISA）を並べる simulator.html 用 */
+.account-steps ol + h4,
+.account-steps p + h4 {
+  margin-top: 1.5rem;
+}
+
+.account-steps ol {
+  padding-left: 1.4em;
+  margin: 0.5rem 0;
+}
+
+.account-steps li {
+  margin-bottom: 0.4rem;
+}
+
+.account-steps .steps-caution {
+  margin: 0.8rem 0 0;
+}
+
+.account-steps p:last-child,
+.account-steps ol:last-child {
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
    広告主が文言を指定している注釈
    広告主のガイドラインで「訴求文言付近に配置」「文言変更不可」とされた注釈を
    置く場所。読み飛ばされない程度に小さく、本文とは区別できる濃さにする。
