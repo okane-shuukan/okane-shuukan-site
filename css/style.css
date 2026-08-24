@@ -79,7 +79,7 @@ main {
   padding: 1.5rem;
 }
 
-.hero, .features, .cards, .notice, .sources, .simulator, .privacy, .articles, .article {
+.hero, .features, .cards, .notice, .sources, .simulator, .privacy, .articles, .article, .note-promo {
   margin-bottom: 2rem;
 }
 
@@ -259,6 +259,54 @@ form#sim-form {
 
 .legal-notes li {
   margin-bottom: 0.3rem;
+}
+
+/* --------------------------------------------------------------------------
+   note 販売バナー
+   自分の有料noteへの導線。金融ジャンルなので煽らず、枠・角丸は .card と同じ値に
+   そろえて記事カードの並びから浮かないようにする。ラベルだけ注記色で区別する。
+   新しい色は増やさず :root のトークンのみ使う。
+   -------------------------------------------------------------------------- */
+.note-promo {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.note-promo-label {
+  display: inline-block;
+  background: var(--color-notice-bg);
+  border-radius: 6px;
+  padding: 0.1rem 0.7rem;
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.note-promo h3 {
+  font-size: 1.05rem;
+  color: var(--color-accent);
+  margin: 0.5rem 0;
+}
+
+.note-promo-price {
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+.note-promo-action {
+  margin: 1rem 0 0;
+}
+
+/* 唯一の塗りボタン。多用すると記事側の中立な見せ方と食い違うので、
+   汎用の .button は作らずこのバナー専用にとどめる。 */
+.note-promo-button {
+  display: inline-block;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-radius: 6px;
+  padding: 0.5rem 1.5rem;
+  text-decoration: none;
+  font-size: 0.95rem;
 }
 
 .site-footer {
